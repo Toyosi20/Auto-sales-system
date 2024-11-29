@@ -1,0 +1,31 @@
+SELECT * FROM car;
+
+
+SELECT u.name, u.contact, l.city_name 
+FROM user_account u
+JOIN location l ON u.location_id = l.location_id
+WHERE l.city_name = 'New York';
+
+
+SELECT a.title, c.brand, c.model, u.name 
+FROM advertisement a
+JOIN car c ON a.car_id = c.car_id
+JOIN user_account u ON a.user_id = u.user_id;
+
+
+SELECT a.title, c.brand, c.model, u.name 
+FROM advertisement a
+JOIN car c ON a.car_id = c.car_id
+JOIN user_account u ON a.user_id = u.user_id;
+
+
+SELECT b.bid_price, b.bid_status, u.name 
+FROM bid b
+JOIN user_account u ON b.user_id = u.user_id
+WHERE b.car_id = 1;
+
+
+SELECT c.brand, c.model, AVG(b.bid_price) AS average_bid_price
+FROM bid b
+JOIN car c ON b.car_id = c.car_id
+GROUP BY c.brand, c.model;
